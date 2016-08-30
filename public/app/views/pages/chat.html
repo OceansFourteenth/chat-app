@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xs-8" id="chat-window">
+    <div class="col-xs-8 chat-window">
         <ul>
             <li ng-repeat="message in messages track by $index">
                 <span class="username">{{message.username}}</span>
@@ -7,9 +7,9 @@
             </li>
         </ul>
     </div>
-    <div class="col-xs-4" id="user-window">
+    <div class="col-xs-4 user-window">
         <ul>
-            <li ng-repeat="user in users">{{user}}</li>
+            <li ng-repeat="user in users track by $index">{{user}}</li>
         </ul>
     </div>
 </div>

@@ -7,7 +7,7 @@ angular.module('chatCtrl', ['SocketFactory'])
     Socket.connect();
     $scope.users = [];
     $scope.messages = [];
-    // $scope.message = '';
+    // $scope.msg = '';
     
     var promptUsername = function(message) {
         bootbox.prompt(message, function(name) {
@@ -27,11 +27,6 @@ angular.module('chatCtrl', ['SocketFactory'])
         }
         $scope.msg = '';
     };
-    
-    promptUsername('What is your name?');
-    
-    Socket.emit('request-users', {});
-    
     Socket.on('users', function(data) {
         $scope.users = data.users;
     });
@@ -50,7 +45,7 @@ angular.module('chatCtrl', ['SocketFactory'])
     
     Socket.on('remove-user', function(data) {
         if ($scope.users.indexOf(data.username) >= 0)
-            $scope.users.splice($scope.users.indexOf(data.username));
+            $scope.users.splice($scope.users.indexOf(data.username), 1);
         
         $scope.messages.push({
             username: data.username,
@@ -65,4 +60,9 @@ angular.module('chatCtrl', ['SocketFactory'])
     $scope.$on('$locationChangeStart', function(event){
         Socket.disconnect(true);
     });
+    
+    Socket.emit('request-users');
+    
+    promptUsername('What is your name?');
+    
 });
