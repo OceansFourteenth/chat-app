@@ -1,1 +1,1 @@
-# nkosi-chat
+# chat-app
