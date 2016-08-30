@@ -1,7 +1,8 @@
 angular.module('myApp', [
     'ngRoute',
     'ui.bootstrap',
-    'btford.socket-io'])
+    'btford.socket-io',
+    'chatCtrl'])
 
 .config(function($routeProvider, $locationProvider) {
     $routeProvider
