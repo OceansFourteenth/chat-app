@@ -20,6 +20,42 @@ var users = [];
 io.on('connection', function(socket) {
 	var username = '';
 	console.log('A User has connected.');
+
+	socket.on('request-users', function() {
+		socket.emit('users', {
+			users: users
+		});
+	});
+
+	socket.on('message', function(data) {
+		io.emit('message', {
+			username: username,
+			message: data.message
+		});
+	});
+
+	socket.on('add-user', function(data) {
+		if (users.indexOf(data.username) === -1) {
+			users.push(username = data.username);
+			io.emit('add-user', {
+				username: username
+			});
+		}
+		else {
+			socket.emit('prompt-username', {
+				message: 'User \'' + data.username + '\' already exists.'
+			});
+		}
+	});
+
+	socket.on('disconnect', function() {
+		console.log(username + ' has disconnected.');
+		if (users.indexOf(username >= 0))
+			users.splice(users.indexOf(username), 1);
+		io.emit('remove-user', {
+			username: username
+		});
+	});
 });
 
 // future api routes
@@ -30,6 +66,6 @@ app.get('/', function(req, res) {
 
 
 
-httpServer.listen(port, function(){
+httpServer.listen(port, function() {
 	console.log('Listening on port ' + port);
 });
