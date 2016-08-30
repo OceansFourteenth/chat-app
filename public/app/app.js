@@ -16,7 +16,6 @@ angular.module('myApp', [
     .when('/chat', {
         templateUrl: 'app/views/pages/chat.html',
         controller: 'chatController',
-        controllerAs: 'chat'
     })
     
     .otherwise({ redirectTo: '/'});
