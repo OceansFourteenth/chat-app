@@ -11,6 +11,7 @@ angular.module('chatCtrl', ['SocketFactory'])
     
     var promptUsername = function(message) {
         bootbox.prompt(message, function(name) {
+            name = name || 'Guest' + new Date().getTime();
             if (name != null && (name = name.trim()).length > 0) {
                 Socket.emit('add-user', {username: name});
             } else {
