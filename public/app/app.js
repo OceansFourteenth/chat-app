@@ -4,6 +4,7 @@ angular.module('myApp', [
     'ngRoute',
     'ui.bootstrap',
     'btford.socket-io',
+    'mainCtrl',
     'chatCtrl'])
 
 .config(function($routeProvider, $locationProvider) {
