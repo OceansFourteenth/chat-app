@@ -37,7 +37,7 @@ angular.module('chatCtrl', ['SocketFactory'])
     });
     
     Socket.on('message', function(data) {
-        $scope.messages.push(data.message);
+        $scope.messages.push(data);
     });
     
     Socket.on('add-user', function(data) {
@@ -56,5 +56,13 @@ angular.module('chatCtrl', ['SocketFactory'])
             username: data.username,
             message: 'has left the chat'
         });
+    });
+    
+    Socket.on('prompt-username', function(data) {
+        promptUsername(data.message);
+    });
+    
+    $scope.$on('$locationChangeStart', function(event){
+        Socket.disconnect(true);
     });
 });
