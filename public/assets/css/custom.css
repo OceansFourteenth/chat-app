@@ -1,0 +1,14 @@
+.user-window {
+    border-left: 2px solid black;
+    height: 300px;
+}
+
+.username {
+    color: red;
+    font-weight: bold;
+}
+
+.chat-window {
+    height: 300px;
+    overflow: auto;
+}
