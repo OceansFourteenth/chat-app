@@ -16,6 +16,12 @@ var port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
 
+var users = [];
+io.on('connection', function(socket) {
+	var username = '';
+	console.log('A User has connected.');
+});
+
 // future api routes
 
 app.get('/', function(req, res) {
