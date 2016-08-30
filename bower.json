@@ -1,14 +1,13 @@
 {
   "name": "chat-app",
-  "version": "1.0.0",
   "description": "Real-time chat application using Node, Socket.IO, Express, and Angular",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Nkosi Woseley <nwoseley14@gmail.com>",
+  "authors": [
+    "Nkosi Woseley <nwoseley14@gmail.com>"
+  ],
   "license": "ISC",
+  "homepage": "https://github.com/OceansFourteenth/nkosi-chat",
   "dependencies": {
-    "express": "^4.14.0"
+    "bootstrap": "^3.3.7"
   }
 }
