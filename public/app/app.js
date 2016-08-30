@@ -1,3 +1,5 @@
+/* global angular */
+
 angular.module('myApp', [
     'ngRoute',
     'ui.bootstrap',
@@ -9,6 +11,12 @@ angular.module('myApp', [
     
     .when('/', {
         templateUrl: 'app/views/pages/home.html'
+    })
+    
+    .when('/chat', {
+        templateUrl: 'app/views/pages/chat.html',
+        controller: 'chatController',
+        controllerAs: 'chat'
     })
     
     .otherwise({ redirectTo: '/'});
