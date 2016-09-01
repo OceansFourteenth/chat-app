@@ -14,13 +14,13 @@ angular.module('myApp', [
         templateUrl: 'app/views/pages/home.html'
     })
     
-    .when('/chat', {
+    .when('/demo', {
         templateUrl: 'app/views/pages/chat.html',
         controller: 'chatController',
     })
     
-    .when('/demo', {
-        redirectTo: '/chat'
+    .when('/chat', {
+        redirectTo: '/demo'
     })
     
     .otherwise({ redirectTo: '/'});
