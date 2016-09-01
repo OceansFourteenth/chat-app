@@ -64,8 +64,7 @@ angular.module('chatCtrl', ['SocketFactory'])
         Socket.disconnect(true);
     });
 
-    Socket.emit('request-users', {}, function() {
-        alert('{}');
-        promptUsername('What is your name?');
-    });
+    Socket.emit('request-users');
+
+    promptUsername('What is your name?');
 });
