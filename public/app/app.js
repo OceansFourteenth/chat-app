@@ -19,6 +19,10 @@ angular.module('myApp', [
         controller: 'chatController',
     })
     
+    .when('/demo', {
+        redirectTo: '/chat'
+    })
+    
     .otherwise({ redirectTo: '/'});
     
     $locationProvider.html5Mode(true);
