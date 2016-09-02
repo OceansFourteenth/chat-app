@@ -17,7 +17,7 @@ ul {
     list-style-type: none;
 }
 
-ul .username {
+.user-window .username {
     font-weight: bold;
     font-style: italic;
 }
