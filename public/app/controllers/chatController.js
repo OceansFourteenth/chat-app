@@ -16,6 +16,7 @@ angular.module('chatCtrl', ['SocketFactory'])
                 Socket.emit('add-user', {
                     username: name
                 });
+                $scope.username = name;
             }
             else {
                 promptUsername('You must enter a username.');
@@ -40,8 +41,7 @@ angular.module('chatCtrl', ['SocketFactory'])
     });
 
     Socket.on('add-user', function(data) {
-        // $scope.users.push(data.username);
-        $scope.username = data.username;
+        $scope.users.push(data.username);
         $scope.messages.push({
             username: data.username,
             message: 'has entered the channel.'
