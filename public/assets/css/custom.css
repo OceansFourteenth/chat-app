@@ -1,3 +1,11 @@
+ul {
+    list-style-type: none;
+}
+
+textarea {
+    max-width: 100%
+}
+
 .user-window {
     border-left: 2px solid black;
     height: 300px;
@@ -13,13 +21,13 @@
     overflow: auto;
 }
 
-ul {
-    list-style-type: none;
-}
-
 .system-message {
     background-color: #CCCCCC;
     font-style: italic;
+}
+
+.system-message .username {
+    color: black;
 }
 
 .self-message .username{
@@ -27,6 +35,5 @@ ul {
 }
 
 .user-window .username {
-    font-weight: bold;
     font-style: italic;
 }
