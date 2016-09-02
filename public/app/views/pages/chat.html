@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-xs-8 chat-window">
         <ul>
-            <li ng-repeat="message in messages track by $index">
+            <li ng-repeat="message in messages track by $index" ng-class="getMessageType(message)">
                 <span class="username">{{message.username}}</span>
                 <span class="message">{{message.message}}</span>
             </li>

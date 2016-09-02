@@ -30,7 +30,8 @@ io.on('connection', function(socket) {
 	socket.on('message', function(data) {
 		io.emit('message', {
 			username: username,
-			message: data.message
+			message: data.message,
+			systemMessage: false
 		});
 	});
 

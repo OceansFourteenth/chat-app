@@ -17,6 +17,15 @@ ul {
     list-style-type: none;
 }
 
+.system-message {
+    background-color: #CCCCCC;
+    font-style: italic;
+}
+
+.self-message .username{
+    color: blue;
+}
+
 .user-window .username {
     font-weight: bold;
     font-style: italic;
