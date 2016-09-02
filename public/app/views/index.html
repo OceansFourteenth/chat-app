@@ -1,57 +1,66 @@
 <html lang="en" ng-app="myApp" ng-controller="mainController">
-	<head>
-		<meta charset="UTF8" />
-		<title>Nkosi Woseley Chat</title>
-		
-		<!-- FOR ANGULAR ROUTING -->
-		<base href="/" />
-		
-		<!-- CSS -->
-		<link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
-		
-		<!--JS-->
-		<!--Socket.IO-->
-		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
-		
-		<!--Bootstrap and jQuery-->
-		<script type="text/javascript" src="assets/libs/jquery/dist/jquery.js"></script>
-		<script type="text/javascript" src="assets/libs/bootstrap/dist/js/bootstrap.js"></script>
-		
-		<!--Angular and dependencies-->
-		<script type="text/javascript" src="assets/libs/angular/angular.js"></script>
-		<script type="text/javascript" src="assets/libs/angular-route/angular-route.js"></script>
-		<script type="text/javascript" src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-		<script type="text/javascript" src="assets/libs/angular-socket-io/socket.js"></script>
-		
-		<!--Tools-->
-		<script type="text/javascript" src="assets/libs/bootbox/bootbox.js"></script>
-		
-		<!--Services-->
-		<script type="text/javascript" src="app/services/SocketFactory.js"></script>
-		
-		<!--Controllers-->
-		<script type="text/javascript" src="app/controllers/mainController.js"></script>
-		<script type="text/javascript" src="app/controllers/chatController.js"></script>
-		
-		<!--Main Angular app file-->
-		<script type="text/javascript" src="app/app.js"></script>
-	</head>
-	<body>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/">Nkosi Woseley Chat</a>
-				</div>
+
+<head>
+	<meta charset="UTF8" />
+	<title>Nkosi Woseley Chat</title>
+
+	<!-- FOR ANGULAR ROUTING -->
+	<base href="/" />
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="assets/libs/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
+
+	<!--JS-->
+	<!--Socket.IO-->
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+	<!--Bootstrap and jQuery-->
+	<script type="text/javascript" src="assets/libs/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="assets/libs/bootstrap/dist/js/bootstrap.js"></script>
+
+	<!--Angular and dependencies-->
+	<script type="text/javascript" src="assets/libs/angular/angular.js"></script>
+	<script type="text/javascript" src="assets/libs/angular-route/angular-route.js"></script>
+	<script type="text/javascript" src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script type="text/javascript" src="assets/libs/angular-socket-io/socket.js"></script>
+
+	<!--Tools-->
+	<script type="text/javascript" src="assets/libs/bootbox/bootbox.js"></script>
+
+	<!--Services-->
+	<script type="text/javascript" src="app/services/SocketFactory.js"></script>
+
+	<!--Controllers-->
+	<script type="text/javascript" src="app/controllers/mainController.js"></script>
+	<script type="text/javascript" src="app/controllers/chatController.js"></script>
+
+	<!--Main Angular app file-->
+	<script type="text/javascript" src="app/app.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#home-navbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				<a class="navbar-brand" href="/">Nkosi Woseley Chat</a>
+			</div>
+			<div class="collapse navbar-collapse" id="home-navbar">
 				<ul class="nav navbar-nav">
 					<li ng-class="{active: isActive('/')}"><a href="/">Home</a></li>
 					<li ng-class="{active: isActive('/demo')}"><a href="/demo">Chat Demo</a></li>
 				</ul>
 			</div>
-		</nav>
-		
-		<div class="container">
-			<div ng-view></div>
 		</div>
-	</body>
+	</nav>
+
+	<div class="container">
+		<div ng-view></div>
+	</div>
+</body>
+
 </html>
