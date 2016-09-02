@@ -6,6 +6,7 @@ angular.module('chatCtrl', ['SocketFactory'])
     Socket.connect();
     $scope.users = [];
     $scope.messages = [];
+    $scope.username = '';
     // $scope.msg = '';
 
     var promptUsername = function(message) {
@@ -39,16 +40,20 @@ angular.module('chatCtrl', ['SocketFactory'])
     });
 
     Socket.on('add-user', function(data) {
-        $scope.users.push(data.username);
+        // $scope.users.push(data.username);
+        $scope.username = data.username;
         $scope.messages.push({
             username: data.username,
             message: 'has entered the channel.'
         });
+        
     });
 
     Socket.on('remove-user', function(data) {
         if ($scope.users.indexOf(data.username) >= 0)
             $scope.users.splice($scope.users.indexOf(data.username), 1);
+            
+        $scope.username = '';
 
         $scope.messages.push({
             username: data.username,

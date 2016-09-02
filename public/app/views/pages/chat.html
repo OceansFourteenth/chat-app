@@ -9,6 +9,9 @@
     </div>
     <div class="col-xs-4 user-window">
         <ul>
+            <li ng-show="username" class="username">{{username}}</li>
+        </ul>
+        <ul>
             <li ng-repeat="user in users track by $index">{{user}}</li>
         </ul>
     </div>
