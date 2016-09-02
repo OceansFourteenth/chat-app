@@ -52,8 +52,9 @@ angular.module('chatCtrl', ['SocketFactory'])
     Socket.on('remove-user', function(data) {
         if ($scope.users.indexOf(data.username) >= 0)
             $scope.users.splice($scope.users.indexOf(data.username), 1);
-            
-        $scope.username = '';
+        
+        if ($scope.username === data.username)    
+            $scope.username = '';
 
         $scope.messages.push({
             username: data.username,
