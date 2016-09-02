@@ -19,7 +19,7 @@ angular.module('chatCtrl', ['SocketFactory'])
                 $scope.username = name;
             }
             else {
-                promptUsername('You must enter a username.');
+                promptUsername('You must enter a username. (Press \'Cancel\' for a default username)');
             }
         });
     };
