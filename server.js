@@ -1,18 +1,17 @@
 var express = require('express');
 var app = express();
-
-var http = require('http');
-var httpServer = http.Server(app);
+var mongoose = require('mongoose');
+var httpServer = require('http').Server(app);
 var io = require('socket.io')(httpServer);
-
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var config = require('./config');
 
-app.use(morgan('dev'));
+mongoose.connect(config.database);
 
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 3000;
+app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/public'));
 
@@ -42,19 +41,20 @@ io.on('connection', function(socket) {
 			io.emit('add-user', {
 				username: username
 			});
-		} else {
+		}
+		else {
 			socket.emit('prompt-username', {
 				message: 'User \'' + data.username + '\' already exists.'
 			});
 		}
 	});
-	
+
 	socket.on('disconnect', function() {
-		console.log('User \''+ username + '\' has disconnected.');
-		
+		console.log('User \'' + username + '\' has disconnected.');
+
 		if (users.indexOf(username) >= 0)
 			users.splice(users.indexOf(username), 1);
-		
+
 		io.emit('remove-user', {
 			username: username
 		});
@@ -67,8 +67,6 @@ app.get('*', function(req, res) {
 	res.sendFile(__dirname + '/public/app/views/index.html');
 });
 
-
-
-httpServer.listen(port, function() {
-	console.log('Listening on port ' + port);
+httpServer.listen(config.port, function() {
+	console.log('Listening on port ' + config.port);
 });
