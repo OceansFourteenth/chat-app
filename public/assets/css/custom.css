@@ -35,5 +35,6 @@ textarea {
 }
 
 .user-window .username {
+    color: blue;
     font-style: italic;
 }
