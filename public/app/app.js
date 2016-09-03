@@ -16,7 +16,7 @@ angular.module('myApp', [
     
     .when('/demo', {
         templateUrl: 'app/views/pages/demo.html',
-        controller: 'chatController',
+        controller: 'demoController',
     })
     
     .when('/chat', {
