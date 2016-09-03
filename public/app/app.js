@@ -5,7 +5,7 @@ angular.module('myApp', [
     'ui.bootstrap',
     'btford.socket-io',
     'mainCtrl',
-    'chatCtrl'])
+    'demoCtrl'])
 
 .config(function($routeProvider, $locationProvider) {
     $routeProvider
@@ -15,7 +15,7 @@ angular.module('myApp', [
     })
     
     .when('/demo', {
-        templateUrl: 'app/views/pages/chat.html',
+        templateUrl: 'app/views/pages/demo.html',
         controller: 'chatController',
     })
     

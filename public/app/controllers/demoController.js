@@ -1,8 +1,8 @@
 /* global angular, bootbox */
 
-angular.module('chatCtrl', ['SocketFactory'])
+angular.module('demoCtrl', ['SocketFactory'])
 
-.controller('chatController', function($scope, Socket) {
+.controller('demoController', function($scope, Socket) {
     Socket.connect();
     $scope.users = [];
     $scope.messages = [];
