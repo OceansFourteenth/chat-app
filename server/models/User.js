@@ -1,10 +1,9 @@
 // grab the packages we need for the user model
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
 // user schema
-var UserSchema = new Schema({
+var UserSchema = new mongoose.Schema({
     username: {type: String, required: true, index: {unique: true}},
     password: {type: String, required: true, select: false}
 });
