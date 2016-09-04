@@ -9,6 +9,7 @@ var config = require('./config');
 
 mongoose.connect(config.database);
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use(morgan('dev'));
