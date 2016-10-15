@@ -11,50 +11,50 @@ module.exports = function(router) {
 
         // find the user
         User.findOne({
-                username: req.body.username
-            })
-            .select('username password') // explicitly select the password since mongoose does not return it by default
-            .exec(function(err, user) {
-                if (err) {
-                    console.error(err);
-                    throw err;
-                }
+            username: req.body.username
+        })
+        .select('username password') // explicitly select the password since mongoose does not return it by default
+        .exec(function(err, user) {
+            if (err) {
+                console.error(err);
+                throw err;
+            }
 
-                if (!user) { // no user with that username was found
+            if (!user) { // no user with that username was found
+                res.json({
+                    success: false,
+                    message: 'Authentication failed. User not found.'
+                });
+            }
+            else {
+
+                // check if password matches
+                var validPassword = user.comparePassword(req.body.password);
+                if (!validPassword) {
                     res.json({
                         success: false,
-                        message: 'Authentication failed. User not found.'
+                        message: 'Authentication failed. Wrong password.'
                     });
                 }
                 else {
 
-                    // check if password matches
-                    var validPassword = user.comparePassword(req.body.password);
-                    if (!validPassword) {
-                        res.json({
-                            success: false,
-                            message: 'Authentication failed. Wrong password.'
-                        });
-                    }
-                    else {
+                    // if user is found and password is right
+                    // create a token
+                    var token = jwt.token({
+                        username: user.username,
+                    }, secret, {
+                        expiresIn: '24h'
+                    });
 
-                        // if user is found and password is right
-                        // create a token
-                        var token = jwt.token({
-                            username: user.username,
-                        }, secret, {
-                            expiresIn: '24h'
-                        });
-
-                        // return the information, including token, as JSON
-                        res.json({
-                            success: true,
-                            message: 'Authentication successful.',
-                            token: token
-                        });
-                    }
+                    // return the information, including token, as JSON
+                    res.json({
+                        success: true,
+                        message: 'Authentication successful.',
+                        token: token
+                    });
                 }
-            });
+            }
+        });
     });
 
     // route to register a new user
@@ -85,7 +85,7 @@ module.exports = function(router) {
     // route middleware to verify a token
     router.use(function(req, res, next) {
         // logging
-        console.log('A user just came to our API!');
+        console.log('A user just came to our Users API!');
         
         // check post parameters, url parameters, or headers for token
         var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -96,7 +96,7 @@ module.exports = function(router) {
             // verifies token and checks exp
             jwt.verify(token, secret, function(err, decoded) {
                 if (err) {
-                    return res.status(403).send({
+                    return res.status(401).send({
                         success: false,
                         message: 'Failed to authenticate token.'
                     });
@@ -115,5 +115,6 @@ module.exports = function(router) {
         }
     });
     
+    // 
     
 };
